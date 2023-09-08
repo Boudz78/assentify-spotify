@@ -1,0 +1,27 @@
+<div
+  class="offset-1 innerCard"
+  [ngStyle]="{
+    'background-image':
+      album.imageRef !== ''
+        ? 'url(' + album.imageRef + ')'
+        : 'url(' + '/assets/logo/default.jpeg' + ')'
+  }"
+>
+  <div class="py-2 top-section">
+    <div class="title">
+      {{
+        album.name.length > 20
+          ? (album.name | slice : 0 : 29) + ".."
+          : album.name
+      }}
+    </div>
+    <div class="nameOfArtist">
+      {{ album.nameOfArtist }}
+    </div>
+    <div class="date">{{ album.Date }}</div>
+    <div class="track-amount">{{ album.TrackAmount }} Tracks</div>
+  </div>
+  <div class="py-2 bottom-section" (click)="openURL(album.href)">
+    Preview On Spotify
+  </div>
+</div>

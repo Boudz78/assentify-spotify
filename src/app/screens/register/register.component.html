@@ -1,0 +1,351 @@
+<div class="bg-dark-green d-flex p-5 justify-content-center">
+  <mat-card class="d-flex">
+    <mat-card-title class="mb-5">
+      <i
+        class="fab fa-spotify hvr-grow-shadow mr-3"
+        style="font-size: 54px"
+      ></i>
+      <h1 class="text-dark">We can't wait for you to join us.</h1>
+      <button class="btn" (click)="navigateBack()">
+        <span> Already have an Account? </span>
+      </button>
+    </mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="registrationForm" action="">
+        <div class="row mb-2 flex-wrap">
+          <div class="col-12 col-md-6 mb-2">
+            <!-- START OF First Name -->
+            <mat-form-field appearance="outline" class="field">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                formControlName="firstName"
+                [formControl]="registrationForm.controls['firstName']"
+              />
+              <mat-error
+                *ngIf="
+                    registrationForm.controls['firstName']['touched'] &&
+                    registrationForm.controls['firstName']['errors']?.['required']
+              "
+              >
+                Required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                    registrationForm.controls['firstName']['touched'] &&
+                    registrationForm.controls['firstName']['errors']?.['minlength']
+              "
+              >
+                Minimum 3 Characters
+              </mat-error>
+            </mat-form-field>
+            <!-- END OF First Name -->
+          </div>
+          <div class="col-12 col-md-6 mb-2">
+            <!-- START OF Last Name -->
+            <mat-form-field appearance="outline" class="field">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                formControlName="lastName"
+                [formControl]="registrationForm.controls['lastName']"
+              />
+              <mat-error
+                *ngIf="
+                                  registrationForm.controls['lastName']['touched'] &&
+                                  registrationForm.controls['lastName']['errors']?.['required']
+                            "
+              >
+                Required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                                  registrationForm.controls['lastName']['touched'] &&
+                                  registrationForm.controls['lastName']['errors']?.['minlength']
+                            "
+              >
+                Minimum 3 Characters
+              </mat-error>
+            </mat-form-field>
+            <!-- END OF Last Name -->
+          </div>
+          <div class="col-12 col-md-6 mb-2">
+            <!-- START OF DOB -->
+            <mat-form-field appearance="outline" class="field">
+              <mat-label>Date of Birth</mat-label>
+              <input
+                [matDatepicker]="picker"
+                matInput
+                formControlName="dateOfBirth"
+                [formControl]="registrationForm.controls['dateOfBirth']"
+                [max]="maxDate"
+                (click)="picker.open()"
+                required
+              /><mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="
+                    registrationForm.controls['dateOfBirth']['touched'] &&
+                    registrationForm.controls['dateOfBirth']['errors']?.['required']
+                  "
+              >
+                Required
+              </mat-error>
+            </mat-form-field>
+            <!-- LAST OF DOB -->
+          </div>
+          <div class="col-12 col-md-6 mb-2">
+            <!-- START OF Email -->
+            <mat-form-field appearance="outline" class="field">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                [formControl]="registrationForm.controls['email']"
+              />
+              <mat-error
+                *ngIf="
+                  registrationForm.controls['email']['touched'] &&
+                  registrationForm.controls['email']['errors']?.['required']
+              "
+              >
+                Required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  registrationForm.controls['email']['touched'] &&
+                  registrationForm.controls['email']['errors']?.['pattern']
+              "
+              >
+                Invalid Email.
+              </mat-error>
+            </mat-form-field>
+            <!-- END OF Email -->
+          </div>
+          <div class="col-12 col-md-6 mb-2">
+            <!-- START OF Phone -->
+            <mat-form-field appearance="outline" class="field">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                formControlName="phoneNumber"
+                [formControl]="registrationForm.controls['phoneNumber']"
+              />
+              <mat-error
+                *ngIf="
+                            registrationForm.controls['phoneNumber']['touched'] &&
+                            registrationForm.controls['phoneNumber']['errors']?.['required']
+                        "
+              >
+                Required
+              </mat-error>
+              <mat-error
+                *ngIf="
+                            registrationForm.controls['phoneNumber']['touched'] &&
+                            registrationForm.controls['phoneNumber']['errors']?.['pattern']
+                        "
+              >
+                Invalid Number (Lebanese Only Please)
+              </mat-error>
+            </mat-form-field>
+            <!-- END OF Phone -->
+          </div>
+          <div class="col-12 col-md-6 mb-2">
+            <!-- START OF Stage Name -->
+            <mat-form-field appearance="outline" class="field">
+              <mat-label>Stage Name</mat-label>
+              <input
+                matInput
+                formControlName="stageName"
+                [formControl]="registrationForm.controls['stageName']"
+              />
+            </mat-form-field>
+            <!-- END OF  Stage Name -->
+          </div>
+        </div>
+
+        <!-- START OF Backstory Name -->
+        <mat-form-field appearance="outline" class="field mb-2">
+          <mat-label>Artist Backstory</mat-label>
+          <input
+            matInput
+            formControlName="artistBackstory"
+            [formControl]="registrationForm.controls['artistBackstory']"
+          />
+        </mat-form-field>
+        <!-- END OF  Backstory Name -->
+        <!-- START OF StartingDate -->
+        <mat-form-field appearance="outline" class="field mb-2">
+          <mat-label>Starting Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            formControlName="startingDate"
+            [formControl]="registrationForm.controls['startingDate']"
+            (click)="picker2.open()"
+            required
+          /><mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <!-- END OF StartingDate -->
+
+        <!-- START OF Profile Picture -->
+        <div>
+          <button class="btn" (click)="fileInput.click()">
+            Choose Artist Image *
+          </button>
+          <input
+            hidden
+            (change)="onFileSelected($event)"
+            #fileInput
+            type="file"
+            id="file"
+          />
+
+          <span style="font-size: 16px">
+            {{ registrationForm.get("profilePicture")?.value }}
+          </span>
+        </div>
+        <!-- END OF Profile Picture -->
+
+        <!-- START OF Albums -->
+
+        <div class="mt-4">
+          <h2>
+            Albums
+            <mat-icon class="pointer" (click)="didClickAddAlbum()"
+              >add_circle</mat-icon
+            >
+          </h2>
+          <hr />
+          <div
+            formArrayName="albums"
+            *ngFor="
+              let content of $any(registrationForm).get('albums')['controls'];
+              let i = index;
+              let last = last
+            "
+          >
+            <div class="d-flex align-items-center mb-3">
+              <mat-icon
+                class="clear-button pointer mr-1 text-danger"
+                (click)="didClickRemoveAlbum(i)"
+                [ngStyle]="{
+                  display: i <= 0 ? 'none' : 'block'
+                }"
+                >cancel</mat-icon
+              >
+              <h3 class="m-0">Album {{ i + 1 }}</h3>
+            </div>
+
+            <div [formGroup]="content">
+              <div class="w-100">
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Album Release Date</mat-label>
+                    <input
+                      [formControl]="content.controls['date']"
+                      [matDatepicker]="albumDate"
+                      matInput
+                      formControlName="date"
+                      (click)="albumDate.open()"
+                    /><mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="albumDate"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #albumDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <button class="btn" (click)="imagePickerAlbum.click()">
+                  Choose Album Image
+                </button>
+
+                <input
+                  hidden
+                  #imagePickerAlbum
+                  (change)="
+                    content.controls['picture']!.patchValue(
+                      $any($event.target).value
+                    )
+                  "
+                  type="file"
+                  accept="image/png, image/jpeg"
+                />
+                <span style="font-size: 16px">
+                  {{ content.controls["picture"]?.value }}
+                </span>
+              </div>
+
+              <div class="mt-3 d-flex mb-1">
+                <h5 class="mr-2">Songs</h5>
+                <mat-icon class="pointer" (click)="didClickAddSong(i)"
+                  >add_circle</mat-icon
+                >
+              </div>
+
+              <div
+                formArrayName="songs"
+                *ngFor="
+                  let song of content.controls['songs']?.controls;
+                  let songIndex = index
+                "
+              >
+                <div class="d-flex" [formGroup]="song">
+                  <div class="col-5">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Song Name</mat-label>
+                      <input
+                        matInput
+                        formControlName="name"
+                        [formControl]="song.controls['name']"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-5">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Song Duration</mat-label>
+                      <input
+                        matInput
+                        formControlName="duration"
+                        [formControl]="song.controls['duration']"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 d-flex mt-3">
+                    <div class="">
+                      <mat-icon
+                        class="text-danger pointer"
+                        (click)="didClickRemoveSong(i, songIndex)"
+                        [ngStyle]="{
+                          display: songIndex === 0 ? 'none' : 'block'
+                        }"
+                        >cancel</mat-icon
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+        </div>
+        <!-- END OF Albums -->
+
+        <button
+          class="btn"
+          [disabled]="!registrationForm.valid"
+          (click)="submitForm()"
+        >
+          Submit
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

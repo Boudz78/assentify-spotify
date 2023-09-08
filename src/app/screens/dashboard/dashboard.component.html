@@ -1,0 +1,79 @@
+<div
+  *ngIf="($displayedAlbums | async)?.length === 0"
+  class="main-container fluid-container"
+  [ngClass]="{
+    'd-flex': firstSearch
+  }"
+>
+  <div class="fluid-container text-center sub-container bg-dark-green">
+    <div *ngIf="firstSearch">
+      <div class="pl-2">
+        <p class="Welcometext">Welcome Back,</p>
+      </div>
+      <div class="pl-2" style="padding-top: 10px">
+        <p class="subwelcometext">Explore your favorite artists now!</p>
+      </div>
+    </div>
+    <div class="fluid-container text-center">
+      <div class="row">
+        <div
+          class="col my-2 flex-wrap mt-3 d-flex vertical-align align-items-center justify-content-center"
+        >
+          <input
+            #searchQueryInputField
+            type="text"
+            placeholder="Search Artists"
+            class="search text-center"
+            (input)="$inputQueryTrigger.next($any($event).target.value)"
+          />
+
+          <span class="sign-out mt-3 mt-sm-0" (click)="logOut()">Log Out</span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fluid-container px-5"
+      *ngIf="$artists | async as artistObservable"
+    >
+      <div class="py-3">
+        <p class="showing-results-text">
+          Showing Results For {{ $inputQueryTrigger | async }}
+        </p>
+      </div>
+      <div class="row px-3">
+        <app-artist-item
+          *ngFor="
+            let artist of artistObservable;
+            trackByFn: utilityService.trackByFn
+          "
+          (click)="retrieveAlbumsFor(artist.name)"
+          [artist]="artist"
+          class="col-lg-3 col-md-4 col-sm-6 pb-3 artist-album"
+        >
+        </app-artist-item>
+      </div>
+      <div *ngIf="artistObservable?.length === 0" class="emptyStateContainer">
+        No Results Found
+      </div>
+    </div>
+  </div>
+</div>
+<div class="album-list" *ngIf="($displayedAlbums | async)?.length !== 0">
+  <h3 class="album-title">
+    <mat-icon class="back-icon" (click)="onBackArrowClick()"
+      >keyboard_arrow_left</mat-icon
+    >
+    {{ currentArtistName + "'s" }} Albums
+  </h3>
+  <div class="row px-3 pt-5 bg-dark-green album-list">
+    <app-album-item
+      *ngFor="
+        let album of $displayedAlbums | async;
+        trackByFn: utilityService.trackByFn
+      "
+      [album]="album"
+      class="col-lg-3 col-md-4 col-sm-6 pb-3 artist-album"
+    >
+    </app-album-item>
+  </div>
+</div>

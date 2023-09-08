@@ -1,0 +1,28 @@
+mat-card-title {
+  padding: 16px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-card-content {
+  mat-form-field {
+    width: 100%;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+}
+.btn {
+  background-color: #1db954;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 12px;
+}

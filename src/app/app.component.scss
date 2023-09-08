@@ -1,0 +1,12 @@
+::ng-deep .mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #1db954;
+}
+.loading-overlay {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.489);
+  z-index: 9999;
+}

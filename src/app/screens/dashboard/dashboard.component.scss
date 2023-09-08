@@ -1,0 +1,81 @@
+.main-container {
+  background-color: rgb(14, 18, 14);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  height: 100vh;
+  .sub-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .Welcometext {
+    color: white;
+    font-size: 56px;
+    line-height: 80px;
+  }
+  .subwelcometext {
+    font-size: 35px;
+    line-height: 35px;
+    color: #1db954;
+  }
+  .search {
+    font-size: 35px;
+    border-radius: 25px;
+    border: none;
+  }
+  .album-list {
+    background-color: rgb(14, 18, 14);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+}
+.album-title {
+  text-align: left;
+  font-size: 36px;
+  padding: 20px;
+  background-color: #1db954;
+  color: white;
+  cursor: pointer;
+  margin: 0;
+}
+.hidden {
+  display: none;
+}
+
+.sign-out {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.emptyStateContainer {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 36px;
+}
+
+.artist-album {
+  height: 200px;
+  cursor: pointer;
+}
+
+.showing-results-text {
+  font-size: 25px;
+  color: white;
+}
+
+.album-list {
+  min-height: 100vh;
+}
