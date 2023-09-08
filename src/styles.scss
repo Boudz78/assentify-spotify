@@ -34,14 +34,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-::ng-deep .mat-mdc-progress-bar.mat-accent {
-  --mdc-linear-progress-active-indicator-color: red;
-}
-
-::ng-deep .mat-mdc-progress-bar.mat-accent .mdc-linear-progress__buffer-bar {
-  background-color: red;
-}
-
 .bg-dark-green {
   background-color: rgb(14, 18, 14);
 }
