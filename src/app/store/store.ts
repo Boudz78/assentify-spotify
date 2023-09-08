@@ -6,7 +6,6 @@ import { registerArtist } from '../models/registerArtist';
 export const authStore = createStore(
   { name: 'auth' },
   withProps<User>({
-    email: '',
     token: '',
   })
 );

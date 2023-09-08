@@ -62,29 +62,12 @@ export class DashboardComponent {
     })
   );
 
-  ngOnInit() {}
-
-  //Listen when a user scrolls to bottom page.
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    if (
-      document.body.clientHeight + window.scrollY + 20 >=
-      document.body.scrollHeight
-    ) {
-      if (this.calledOnce === false) {
-        console.log('now should load more..');
-        this.calledOnce = true;
-      }
-    }
-  }
   retrieveAlbumsFor(artistName: string) {
     this.currentArtistName = artistName;
-    console.log(artistName);
     this.apiService
       .getAlbums(artistName)
       .pipe(
         map((data) => {
-          console.log(data);
           const MappedArtists = data.albums.items.map((album: any) => ({
             name: album.name,
             nameOfArtist: album.artists[0].name,

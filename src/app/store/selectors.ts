@@ -8,18 +8,11 @@ export const $tokenSelector = authStore.pipe(
     return state.token;
   })
 );
-export const $emailSelector = authStore.pipe(select((state) => state.email));
-export const $isLoggedIn = authStore.pipe(
-  select((state) => !!state.token),
-  tap((data) => {
-    console.log('ISLOGGEDIN', data);
-  })
-);
+export const $isLoggedIn = authStore.pipe(select((state) => !!state.token));
 
 export function resetStore() {
   authStore.update((auth) => {
     return {
-      email: '',
       token: '',
     };
   });

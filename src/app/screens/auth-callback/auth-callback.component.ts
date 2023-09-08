@@ -26,13 +26,9 @@ export class AuthCallbackComponent implements OnInit {
       authStore.update(() => {
         return {
           token: `${authCredentials.token_type} ${authCredentials.access_token}`,
-          email: 'SIGNED IN!',
         };
       });
       console.log('after update', authStore.getValue());
-
-      console.log();
-      //TODO: Save in STORE
       this.router.navigate(['/dashboard']);
     } else {
       this.router.navigate(['/']);

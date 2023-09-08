@@ -10,7 +10,7 @@ import {
   timeout,
 } from 'rxjs';
 import { authStore } from '../store/store';
-import { $tokenSelector, $emailSelector, resetStore } from '../store/selectors';
+import { $tokenSelector, resetStore } from '../store/selectors';
 import { UtilityService } from './utility.service';
 
 @Injectable({
