@@ -44,7 +44,7 @@
         <app-artist-item
           *ngFor="
             let artist of artistObservable;
-            trackByFn: utilityService.trackByFn
+            trackBy: utilityService.trackByFn
           "
           (click)="retrieveAlbumsFor(artist.name)"
           [artist]="artist"
@@ -69,7 +69,7 @@
     <app-album-item
       *ngFor="
         let album of $displayedAlbums | async;
-        trackByFn: utilityService.trackByFn
+        trackBy: utilityService.trackByFn
       "
       [album]="album"
       class="col-lg-3 col-md-4 col-sm-6 pb-3 artist-album"
